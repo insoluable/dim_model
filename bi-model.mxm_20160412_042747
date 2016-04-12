@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><Model version="5.0">
+    <Configuration>
+        <Property name="dialect" value="OracleDialect"/>
+        <Property name="ALIAS" value="xe"/>
+        <Property name="DRIVER" value="oracle.jdbc.driver.OracleDriver"/>
+        <Property name="PASSWORD" value="maewlai"/>
+        <Property name="PROMPTFORPASSWORD" value="false"/>
+        <Property name="URL" value="jdbc:oracle:thin:@//192.168.1.119:1521/xe"/>
+        <Property name="USER" value="MAEW"/>
+    </Configuration>
+    <CustomTypes/>
+    <Domains/>
+    <Tables>
+        <Table id="9184c451-632b-4cb7-8c32-74a615c2229c" name="FACT_PRODUCT_SALES" schema="">
+            <Property name="LOCATION" value="531:335"/>
+            <Property name="tableSpace" value=""/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="d48d7d84-2222-49cf-8562-057fda6901c2" name="PRODUCT_SK" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="328f556e-f6f4-4641-b6fc-e2be2cd02c31" name="REGION_SK" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="DATE" defaultvalue="" extra="" fraction="null" id="a1834efe-d832-4423-b37a-1b7d5649f7a7" name="DATE_SK" nullable="false" scale="10" size=""/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="751d830b-78b7-4ca5-b2c3-e091c5fa8d39" name="REP_SK" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="e61c43cb-37d3-40d2-b36c-be0277568d87" name="CUSTOMER_SK" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="073de905-ac33-4d2d-b43a-12bac16ef89e" name="COUNTRY_SK" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="7c1eadbc-ce4c-457d-b54f-6a1e1d5e2fe7" name="QUANTITY_SOLD" nullable="true" scale="10" size="6"/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="2" id="7e12e8ea-df0e-482d-8f54-f6e6900d2d44" name="UNIT_COST" nullable="true" scale="10" size="10"/>
+        </Table>
+        <Table id="3baecfda-9187-4d93-82a7-20bedde0ebd9" name="DIM_REP" schema="">
+            <Property name="LOCATION" value="194:196"/>
+            <Property name="tableSpace" value=""/>
+            <Comment>Sales Rep</Comment>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="531e06a3-7bd1-4ebd-a2b4-729d043e925d" name="REP_SK" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="f5454603-9f6a-4f9c-8719-1dda983ba877" name="FAMILY_NAME" nullable="false" scale="10" size="100"/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="97d6c813-58ee-487a-986a-3bdab94e37ba" name="GIVEN_NAME" nullable="false" scale="10" size="50"/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="2f2eadcf-d7fa-4d8b-9f68-9613dc9685cf" name="FK_FACT_ORDER_ORDER_SK" nullable="false" scale="10" size="10"/>
+            <Index id="b1a1a26b-d8b4-4e95-ade7-b25645a93066" indextype="PRIMARYKEY" name="REP_PK">
+                <Property name="tableSpace" value=""/>
+                <Indexattribute attributerefid="531e06a3-7bd1-4ebd-a2b4-729d043e925d" id="d923849c-e9ed-49fa-b249-f72dcb5dbd79"/>
+            </Index>
+        </Table>
+        <Table id="13f96741-a61a-4d32-979f-f3e1994c664f" name="DIM_CUSTOMER" schema="">
+            <Property name="LOCATION" value="879:476"/>
+            <Property name="tableSpace" value=""/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="053af4fb-769f-43d7-a0bf-1a3c7fef9d57" name="CUSTOMER_ID" nullable="false" scale="10" size="100"/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="8c58f601-13b0-4f92-b32b-dbce305b59cb" name="CUSTOMER_SK" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="7b62abea-9173-46f6-8779-4110dd41b4c7" name="FAMILY_NAME" nullable="false" scale="10" size="100"/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="aa12c627-4c07-49d8-a7c4-cac5095c6b67" name="GIVEN_NAME" nullable="false" scale="10" size="50"/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="46426fcc-2e34-4331-a806-a99e7c17e5ef" name="SHIP_ADDRESS" nullable="false" scale="10" size="50"/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="3ceec3d9-7257-42db-acf0-209ddb1a818d" name="COMPANY_NAME" nullable="false" scale="10" size="50"/>
+            <Index id="6e72916e-7e9d-4167-b38b-f8a52cdd3028" indextype="PRIMARYKEY" name="CUSTOMER_PK">
+                <Property name="tableSpace" value=""/>
+                <Indexattribute attributerefid="8c58f601-13b0-4f92-b32b-dbce305b59cb" id="53bcd08c-c804-4fd6-b7a2-1b9ee189a466"/>
+            </Index>
+        </Table>
+        <Table id="001f2aa0-9634-45b0-bc8b-9462dc70f022" name="DIM_REGION" schema="">
+            <Property name="LOCATION" value="257:478"/>
+            <Property name="tableSpace" value=""/>
+            <Comment>Sales Region</Comment>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="1875a2b9-a0f0-48d1-add6-c61d3946c654" name="REGION_SK" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="886b3344-5f56-41e9-980b-e83f6d5bb62c" name="REGION" nullable="false" scale="10" size="50"/>
+            <Index id="5b3f1582-e147-4652-923c-5fe5f5464456" indextype="PRIMARYKEY" name="REGION_PK">
+                <Property name="tableSpace" value=""/>
+                <Indexattribute attributerefid="1875a2b9-a0f0-48d1-add6-c61d3946c654" id="e0483ecd-48fc-47d0-999a-fc55644617af"/>
+            </Index>
+        </Table>
+        <Table id="5ccfb8c8-ebd0-458e-86ac-63a7cad018ad" name="DIM_DATE" schema="">
+            <Property name="LOCATION" value="796:217"/>
+            <Property name="tableSpace" value=""/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="42131a74-e5a4-4a57-af3d-3f3b8b64aff6" name="DATE_SK" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="DATE" defaultvalue="" extra="" fraction="null" id="93025e74-c90c-4a9b-893c-5855c6302baf" name="D_DATE" nullable="false" scale="10" size=""/>
+            <Index id="f28c35ae-63b5-467c-811e-12ffcf7e1b91" indextype="PRIMARYKEY" name="DATE_PK">
+                <Property name="tableSpace" value=""/>
+                <Indexattribute attributerefid="42131a74-e5a4-4a57-af3d-3f3b8b64aff6" id="a7167d1a-bf1c-4bc1-8caf-a1ecc982af70"/>
+            </Index>
+        </Table>
+        <Table id="9edabd34-56c1-40ec-9f4c-1b76a11a9917" name="DIM_COUNTRY" schema="">
+            <Property name="LOCATION" value="558:562"/>
+            <Property name="tableSpace" value=""/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="0ad2c924-bcf1-4394-bfae-d28cf1105382" name="COUNTRY_SK" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="6cba9ab6-006f-4222-9954-fbd760fa0ee3" name="COUNTRY_ABBR" nullable="false" scale="10" size="3"/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="6bcec3e7-3aea-4e92-ac06-753164b6ea61" name="COUNTRY" nullable="false" scale="10" size="50"/>
+            <Index id="e7b5d531-15c4-4685-9ad9-011d07abb21e" indextype="PRIMARYKEY" name="COUNTRY_PK">
+                <Property name="tableSpace" value=""/>
+                <Indexattribute attributerefid="0ad2c924-bcf1-4394-bfae-d28cf1105382" id="2e978737-cd22-4154-880a-0a9940ed7c53"/>
+            </Index>
+        </Table>
+        <Table id="fe2b9c91-cc88-488e-b1d8-3679eceba500" name="DIM_PRODUCT" schema="">
+            <Property name="LOCATION" value="566:99"/>
+            <Property name="tableSpace" value=""/>
+            <Attribute datatype="NUMBER" defaultvalue="" extra="" fraction="0" id="0f8d0bb0-242e-4e9d-bca1-4f0857ea6e0c" name="PRODUCT_SK" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="d5ad774e-3d49-47e7-a519-ef59ee1c13e0" name="PRODUCT_ID" nullable="false" scale="10" size="10"/>
+            <Attribute datatype="VARCHAR2" defaultvalue="" extra="" fraction="null" id="e8229668-fb56-4461-a7e9-0d05cfa497ff" name="PRODUCT" nullable="false" scale="10" size="50"/>
+            <Index id="c9f21420-9901-4ec7-9e58-3855cae4a87f" indextype="PRIMARYKEY" name="PRODUCT_PK">
+                <Property name="tableSpace" value=""/>
+                <Indexattribute attributerefid="0f8d0bb0-242e-4e9d-bca1-4f0857ea6e0c" id="8e59dfc6-44ae-4b33-803b-4559830f24b1"/>
+            </Index>
+        </Table>
+    </Tables>
+    <Relations/>
+    <Views/>
+    <Subjectareas/>
+    <Comments/>
+</Model>
